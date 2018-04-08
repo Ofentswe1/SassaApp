@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity{
                     CharSequence text = "Login Successful!";
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
-                    startActivity(new Intent(getBaseContext(), MapsActivity.class));
+                    startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
                 }
 //                else if(idNumber.toString() !="01234" && password.toString() != "admin"){
