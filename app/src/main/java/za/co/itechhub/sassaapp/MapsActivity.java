@@ -10,7 +10,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -40,8 +39,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng southAfrica = new LatLng(-30.5595, 22.9375);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -53,7 +50,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         mMap.setMyLocationEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(southAfrica));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(southAfrica));
         mMap.animateCamera(CameraUpdateFactory.zoomBy(13));
     }
+//    private LocationSource.OnLocationChangedListener mListener;
+//
+//    @Override
+//    public void onLocationChanged(Location location)
+//    {
+//        if( mListener != null )
+//        {
+//            mListener.onLocationChanged( location );
+//
+//            //Move the camera to the user's location and zoom in!
+//            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(location.getLatitude(), location.getLongitude()), 12.0f));
+//        }
+//    }
+
 }
