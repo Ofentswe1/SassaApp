@@ -12,11 +12,12 @@
     tools:context="za.co.itechhub.sassaapp.LoginActivity">
 
     <ImageView
+        android:layout_marginTop="100dp"
         android:id="@+id/image_logo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="220dp"
         android:layout_gravity="center"
-        android:src="@drawable/sassa" />
+        android:src="@drawable/logo2" />
     <LinearLayout
         android:layout_marginTop="-20dp"
         android:layout_width="match_parent"
