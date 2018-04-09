@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         Button loginButton = (Button) findViewById(R.id.email_sign_in_button);
         idNumber = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
@@ -50,13 +49,6 @@ public class LoginActivity extends AppCompatActivity{
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
                 }
-//                else if(idNumber.toString() !="01234" && password.toString() != "admin"){
-//                    Context context = getApplicationContext();
-//                    int duration = Toast.LENGTH_SHORT;
-//                    CharSequence text = "Wrong Details provided!";
-//                    Toast toast = Toast.makeText(context, text, duration);
-//                    toast.show();
-//                }
 
             }
         });
