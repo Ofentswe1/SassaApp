@@ -13,7 +13,7 @@ import android.widget.Toast;
  * A login screen that offers login via email/password.
  */
 @SuppressWarnings("ALL")
-public class LoginActivity extends AppCompatActivity{
+public class LoginActivity extends AppCompatActivity {
 
 
     // UI references.
@@ -34,22 +34,27 @@ public class LoginActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                if(TextUtils.isEmpty(password.getText()) && TextUtils.isEmpty(idNumber.getText())){
+                if (TextUtils.isEmpty(password.getText()) && TextUtils.isEmpty(idNumber.getText())) {
+
                     ToastMessage("All Fields are required!");
                     idNumber.setError("Id Number Required.");
                     password.setError("Password Required.");
-                }
-                else if(TextUtils.isEmpty(idNumber.getText())){
+
+                } else if (TextUtils.isEmpty(idNumber.getText())) {
+
                     ToastMessage("Id Number Required.");
                     idNumber.setError("Id Number Required.");
-                }
-                else if(TextUtils.isEmpty(password.getText())){
+
+                } else if (TextUtils.isEmpty(password.getText())) {
+
                     ToastMessage("Password Required.");
                     password.setError("Password Required.");
-                }
-                else{
+
+                } else {
+
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
+
                 }
             }
         });
