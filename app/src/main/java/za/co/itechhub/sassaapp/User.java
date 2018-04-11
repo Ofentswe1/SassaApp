@@ -1,5 +1,4 @@
 package za.co.itechhub.sassaapp;
-
 import java.io.Serializable;
 
 /**

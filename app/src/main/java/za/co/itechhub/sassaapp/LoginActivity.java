@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                     password.setError("Password Required.");
 
                 } else {
-
+                    new JSONTask().execute("http://192.168.8.100:8000/app/api/8301015800083/Mlungisi/");
                     startActivity(new Intent(getBaseContext(), MainActivity.class));
                     finish();
 
@@ -109,8 +109,9 @@ public class LoginActivity extends AppCompatActivity {
                     String surname = object.getString("last_name");
                     String address = object.getString("email");
                     String username = object.getString("username");
-
-                    System.out.println("name: "+ name+", Surname: "+surname+", address: "+address+", username: "+username);
+                    System.out.println("_________________________________________________________");
+                    System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
+                            +", username: "+username);
                     users.add(new User(name, surname, address, username));
                 }
                 return buffer.toString();
@@ -141,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(user.getUsername().equals(idNumber.getText().toString())&&
                             user.getSurname().equals(password.getText().toString())){
                         Toast.makeText(getBaseContext(),"Access granted",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getBaseContext(),MapsActivity.class);
+                        Intent intent = new Intent(getBaseContext(), MapsActivity.class);
                         intent.putExtra("_user",user);
                         startActivity(intent);
                         finish();
