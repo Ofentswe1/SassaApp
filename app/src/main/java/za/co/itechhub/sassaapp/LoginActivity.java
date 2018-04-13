@@ -67,12 +67,12 @@ public class LoginActivity extends AppCompatActivity {
                     System.out.println("______________________________________________________");
                     new JSONTask().execute("http://192.168.8.100:8000/app/api/" + idNumber.toString()
                             + "/" + password.toString() + "/");
-                    User user = new User("mlugisi","shokkl", "ghhgh jhgjhgjh",
-                            "jhhjkhkhkhkhkh");
-                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                    intent.putExtra("user",user);
-                    startActivity(intent);
-                    finish();
+//                    User user = new User("mlugisi","shokkl", "ghhgh jhgjhgjh",
+//                            "jhhjkhkhkhkhkh");
+//                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
+//                    intent.putExtra("user",user);
+//                    startActivity(intent);
+//                    finish();
 
                 }
             }
