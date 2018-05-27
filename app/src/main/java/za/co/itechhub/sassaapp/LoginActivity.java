@@ -46,41 +46,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-                //new JSONTask().execute("http://192.168.8.106:8000/app/personal/ofentswe/");
-                if (TextUtils.isEmpty(password.getText()) && TextUtils.isEmpty(idNumber.getText())) {
-
-                    ToastMessage("All Fields are required!");
-                    idNumber.setError("Id Number Required.");
-                    password.setError("Password Required.");
-
-                } else if (TextUtils.isEmpty(idNumber.getText())) {
-
-                    ToastMessage("Id Number Required.");
-                    idNumber.setError("Id Number Required.");
-
-                } else if (TextUtils.isEmpty(password.getText())) {
-
-                    ToastMessage("Password Required.");
-                    password.setError("Password Required.");
-
-                } else {
-                    System.out.println("______________________________________________________");
-                    new JSONTask().execute("http://192.168.8.101:8000/app/api/" + idNumber.getText().toString()
-                            + "/" + password.getText().toString() + "/");
-//                    User user = new User("mlugisi","shokkl", "ghhgh jhgjhgjh",
-//                            "jhhjkhkhkhkhkh");
-//                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
-//                    intent.putExtra("user",user);
-//                    startActivity(intent);
-//                    finish();
-
-                }
-=======
                     System.out.println("__________1111111111111____");
-                    new JSONTask().execute("http://192.168.43.75:8000/app/api/"+
+                    new JSONTask().execute("http://192.168.43.100:8000/app/api/"+
                             idNumber.getText().toString()+"/"+ password.getText().toString());
->>>>>>> d2db7f3e6ba1b58429ccd85c28db2bf52e1a0fdd
             }
         });
     }
@@ -127,21 +95,6 @@ public class LoginActivity extends AppCompatActivity {
                 users.add(new User(name, surname, address, username,password));
                 //onPostExecute(jsonObject);
 
-<<<<<<< HEAD
-
-                JSONObject object = jsonArray.getJSONObject(0).getJSONObject("fields");
-                String name = object.getString("first_name");
-                String surname = object.getString("last_name");
-                String address = object.getString("email");
-                String username = object.getString("username");
-                System.out.println("_________________________________________________________");
-                System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
-                        +", username: "+username);
-
-                users.add(new User(name, surname, address, username));
-
-=======
->>>>>>> d2db7f3e6ba1b58429ccd85c28db2bf52e1a0fdd
                 return buffer.toString();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
