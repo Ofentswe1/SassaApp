@@ -65,8 +65,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
                     System.out.println("______________________________________________________");
-                    new JSONTask().execute("http://192.168.8.100:8000/app/api/" + idNumber.toString()
-                            + "/" + password.toString() + "/");
+                    new JSONTask().execute("http://192.168.8.101:8000/app/api/" + idNumber.getText().toString()
+                            + "/" + password.getText().toString() + "/");
 //                    User user = new User("mlugisi","shokkl", "ghhgh jhgjhgjh",
 //                            "jhhjkhkhkhkhkh");
 //                    Intent intent = new Intent(getBaseContext(), MainActivity.class);
@@ -109,18 +109,18 @@ public class LoginActivity extends AppCompatActivity {
                 JSONObject jsonParent = new JSONObject(finalObject);
                 JSONArray jsonArray = jsonParent.getJSONArray("users");
 
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject object = jsonArray.getJSONObject(i);
-                    String name = object.getString("first_name");
-                    String surname = object.getString("last_name");
-                    String address = object.getString("email");
-                    String username = object.getString("username");
-                    System.out.println("_________________________________________________________");
-                    System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
-                            +", username: "+username);
 
-                    users.add(new User(name, surname, address, username));
-                }
+                JSONObject object = jsonArray.getJSONObject(0).getJSONObject("fields");
+                String name = object.getString("first_name");
+                String surname = object.getString("last_name");
+                String address = object.getString("email");
+                String username = object.getString("username");
+                System.out.println("_________________________________________________________");
+                System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
+                        +", username: "+username);
+
+                users.add(new User(name, surname, address, username));
+
                 return buffer.toString();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
