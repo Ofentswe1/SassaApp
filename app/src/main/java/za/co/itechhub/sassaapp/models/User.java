@@ -1,4 +1,5 @@
-package za.co.itechhub.sassaapp;
+package za.co.itechhub.sassaapp.models;
+
 import java.io.Serializable;
 
 /**
@@ -10,12 +11,25 @@ public class User implements Serializable {
     String surname;
     String address;
     String username;
+    String password;
 
-    public User(String name, String surname, String address, String username) {
+    public User() {
+    }
+
+    public User(String name, String surname, String address, String username, String password) {
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.username = username;
+        this.password = password;
+
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getName() {

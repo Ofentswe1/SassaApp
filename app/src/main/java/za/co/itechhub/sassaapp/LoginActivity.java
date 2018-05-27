@@ -24,28 +24,29 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import za.co.itechhub.sassaapp.models.User;
+
 /**
  * A login screen that offers login via email/password.
  */
-@SuppressWarnings("ALL")
 public class LoginActivity extends AppCompatActivity {
 
     private EditText idNumber, password;
     private ArrayList<User> users = new ArrayList<>();
-    // Toast context and duration
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Button loginButton = (Button) findViewById(R.id.email_sign_in_button);
-        idNumber = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        Button loginButton = findViewById(R.id.email_sign_in_button);
+        idNumber = findViewById(R.id.email);
+        password = findViewById(R.id.password);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+<<<<<<< HEAD
                 //new JSONTask().execute("http://192.168.8.106:8000/app/personal/ofentswe/");
                 if (TextUtils.isEmpty(password.getText()) && TextUtils.isEmpty(idNumber.getText())) {
 
@@ -75,14 +76,13 @@ public class LoginActivity extends AppCompatActivity {
 //                    finish();
 
                 }
+=======
+                    System.out.println("__________1111111111111____");
+                    new JSONTask().execute("http://192.168.43.75:8000/app/api/"+
+                            idNumber.getText().toString()+"/"+ password.getText().toString());
+>>>>>>> d2db7f3e6ba1b58429ccd85c28db2bf52e1a0fdd
             }
         });
-    }
-
-    public void ToastMessage(CharSequence text) {
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(this, text, duration);
-        toast.show();
     }
 
     private class JSONTask extends AsyncTask<String, String, String> implements AdapterView.OnItemClickListener {
@@ -104,11 +104,30 @@ public class LoginActivity extends AppCompatActivity {
                     buffer.append(line);
                 }
                 String jsonObject = buffer.toString();
-                String finalObject = "{" + '"' + "users" + '"' + ": " + jsonObject + "}";
+                String finalObject = "{" + '"' + "users" + '"' + ":" + jsonObject + "}";
+                System.out.println("---------------------------");
+                System.out.println(finalObject);
 
                 JSONObject jsonParent = new JSONObject(finalObject);
                 JSONArray jsonArray = jsonParent.getJSONArray("users");
+                System.out.println("----------222222222222222222222222222222-------");
+                System.out.println(jsonArray.toString());
 
+                JSONObject object = jsonArray.getJSONObject(0).getJSONObject("fields");
+                System.out.println(object.toString());
+                String name = object.getString("first_name");
+                String surname = object.getString("last_name");
+                String address = object.getString("email");
+                String username = object.getString("username");
+                String password = object.getString("password");
+                System.out.println("_____________33333333333333333333333________________");
+                System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
+                        +", username: "+username + ", password: "+password);
+
+                users.add(new User(name, surname, address, username,password));
+                //onPostExecute(jsonObject);
+
+<<<<<<< HEAD
 
                 JSONObject object = jsonArray.getJSONObject(0).getJSONObject("fields");
                 String name = object.getString("first_name");
@@ -121,6 +140,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 users.add(new User(name, surname, address, username));
 
+=======
+>>>>>>> d2db7f3e6ba1b58429ccd85c28db2bf52e1a0fdd
                 return buffer.toString();
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -144,21 +165,25 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            if (validateInpuut()) {
-                for (User user : users) {
-                    if(user.getUsername().equals(idNumber.getText().toString())&&
-                            user.getSurname().equals(password.getText().toString())){
+            System.out.println("________________44444444444444444444444444444________________");
+            if (validateInput()) {
+                System.out.println("________________555555555555555555555555555555555________________");
+                if (!users.isEmpty()) {
+                    System.out.println("________________66666666666666666666666666666________________");
+                    User user = users.get(0);
+                        System.out.println("________________77777777777777777777777777________________");
                         Toast.makeText(getBaseContext(),"Access granted",Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                        intent.putExtra("_user",user);
+                        intent.putExtra("user",user);
                         startActivity(intent);
                         finish();
-                    }
+                }else{
+                    //TODO validate wrong credentials
                 }
             }
         }
 
-        public boolean validateInpuut() {
+        public boolean validateInput() {
             if (TextUtils.isEmpty(idNumber.getText())) {
                 idNumber.setError("Required.");
                 return false;
