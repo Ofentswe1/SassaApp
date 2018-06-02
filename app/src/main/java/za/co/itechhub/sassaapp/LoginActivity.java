@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     System.out.println("__________1111111111111____");
-                    new JSONTask().execute("http://192.168.43.100:8000/app/api/"+
-                            idNumber.getText().toString()+"/"+ password.getText().toString());
+                    new JSONTask().execute("http://192.168.43.100:8000/app/api/" +
+                            idNumber.getText().toString() + "/" +  password.getText().toString());
             }
         });
     }
@@ -89,8 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = object.getString("username");
                 String password = object.getString("password");
                 System.out.println("_____________33333333333333333333333________________");
-                System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
-                        +", username: "+username + ", password: "+password);
+                System.out.println("name: " + name + ", Surname: " + surname + ", address: " + address + ", username: " + username + ", password: " + password);
 
                 users.add(new User(name, surname, address, username,password));
                 //onPostExecute(jsonObject);

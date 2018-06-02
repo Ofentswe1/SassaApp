@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         System.out.println("_____________888888888888888888________________");
-        System.out.println("name: "+ user.getName()+", Surname: "+user.getSurname()+", address: " + user.getAddress()
-                +", username: "+user.getUsername() + ", password: "+user.getPassword());
+        System.out.println("name: " + user.getName() + ", Surname: " + user.getSurname() + ", address: " + user.getAddress()
+                 + ", username: " + user.getUsername() + ", password: " + user.getPassword());
         //last_name.setText(user.getSurname() + " " + user.getName());
         //idNumber.setText(user.getUsername());
         if (id == R.id.nav_camera) {
