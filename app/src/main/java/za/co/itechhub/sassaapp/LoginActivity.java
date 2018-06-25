@@ -132,6 +132,7 @@ public class LoginActivity extends AppCompatActivity {
                         finish();
                 }else{
                     //TODO validate wrong credentials
+
                 }
             }
         }
