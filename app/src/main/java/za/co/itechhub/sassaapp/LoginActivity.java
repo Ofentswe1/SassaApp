@@ -83,7 +83,6 @@ public class LoginActivity extends AppCompatActivity {
                 String address = object.getString("email");
                 String username = object.getString("username");
                 String password = object.getString("password");
-
                 users.add(new User(name, surname, address, username, password));
 
                 return buffer.toString();
