@@ -6,15 +6,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +24,7 @@ import java.util.ArrayList;
 import za.co.itechhub.sassaapp.models.User;
 
 /**
- * A login screen that offers login via email/password.
+ * A login screen that offers login via username/password.
  */
 public class LoginActivity extends AppCompatActivity {
 
@@ -46,14 +43,16 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    System.out.println("__________1111111111111____");
-                    new JSONTask().execute("http://192.168.43.75:8000/app/api/"+
-                            idNumber.getText().toString()+"/"+ password.getText().toString());
+                if (validateInput()) {
+                    new JSONTask().execute("http://192.168.100.36:8000/app/api/" +
+                            idNumber.getText().toString() + "/" + password.getText().toString());
+                }
             }
         });
     }
 
-    private class JSONTask extends AsyncTask<String, String, String> implements AdapterView.OnItemClickListener {
+
+    private class JSONTask extends AsyncTask<String, String, String> {
 
         @Override
         protected String doInBackground(String... params) {
@@ -73,13 +72,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 String jsonObject = buffer.toString();
                 String finalObject = "{" + '"' + "users" + '"' + ":" + jsonObject + "}";
-                System.out.println("---------------------------");
-                System.out.println(finalObject);
 
                 JSONObject jsonParent = new JSONObject(finalObject);
                 JSONArray jsonArray = jsonParent.getJSONArray("users");
-                System.out.println("----------222222222222222222222222222222-------");
-                System.out.println(jsonArray.toString());
 
                 JSONObject object = jsonArray.getJSONObject(0).getJSONObject("fields");
                 System.out.println(object.toString());
@@ -88,12 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                 String address = object.getString("email");
                 String username = object.getString("username");
                 String password = object.getString("password");
-                System.out.println("_____________33333333333333333333333________________");
-                System.out.println("name: "+ name+", Surname: "+surname+", address: " + address
-                        +", username: "+username + ", password: "+password);
 
-                users.add(new User(name, surname, address, username,password));
-                //onPostExecute(jsonObject);
+                users.add(new User(name, surname, address, username, password));
 
                 return buffer.toString();
             } catch (MalformedURLException e) {
@@ -118,42 +109,30 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            System.out.println("________________44444444444444444444444444444________________");
-            if (validateInput()) {
-                System.out.println("________________555555555555555555555555555555555________________");
-                if (!users.isEmpty()) {
-                    System.out.println("________________66666666666666666666666666666________________");
-                    User user = users.get(0);
-                        System.out.println("________________77777777777777777777777777________________");
-                        Toast.makeText(getBaseContext(),"Access granted",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                        intent.putExtra("user",user);
-                        startActivity(intent);
-                        finish();
-                }else{
-                    //TODO validate wrong credentials
-                }
+            if (!users.isEmpty()) {
+                User user = users.get(0);
+                Toast.makeText(getBaseContext(), "Access granted", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.putExtra("user", user);
+                startActivity(intent);
+                finish();
             }
         }
+    }
 
-        public boolean validateInput() {
-            if (TextUtils.isEmpty(idNumber.getText())) {
-                idNumber.setError("Required.");
-                return false;
-            } else {
-                idNumber.setError(null);
-            }
-            if (TextUtils.isEmpty(password.getText())) {
-                password.setError("Required.");
-                return false;
-            } else {
-                password.setError(null);
-            }
-            return true;
+    public boolean validateInput() {
+        if (TextUtils.isEmpty(idNumber.getText())) {
+            idNumber.setError("Required.");
+            return false;
+        } else {
+            idNumber.setError(null);
         }
-        @Override
-        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        if (TextUtils.isEmpty(password.getText())) {
+            password.setError("Required.");
+            return false;
+        } else {
+            password.setError(null);
         }
+        return true;
     }
 }
