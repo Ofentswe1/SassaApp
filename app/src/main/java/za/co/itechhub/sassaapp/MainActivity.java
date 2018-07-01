@@ -1,6 +1,7 @@
 package za.co.itechhub.sassaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -36,8 +37,20 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with another menu for example edit profile", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_activity_layout),
+                        "Replace with another menu for example edit profile", 20000);
+                snackBar.setActionTextColor(Color.RED);
+                // Changing action button text color
+                View sbView = snackBar.getView();
+                TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+                snackBar.setAction("Dismiss", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackBar.dismiss();
+                    }
+                });
+                snackBar.show();
             }
         });
 
@@ -79,7 +92,8 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.action_logout:
-
+                startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                finish();
                 break;
                 default:
                     break;

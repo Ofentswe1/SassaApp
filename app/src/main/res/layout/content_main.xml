@@ -32,7 +32,7 @@
              android:layout_height="wrap_content"
              android:id="@+id/profile_details"
              android:gravity="center"
-             android:paddingTop="24dp"
              android:text="Sassa user profile"/>
+
      </LinearLayout>
 </android.support.constraint.ConstraintLayout>
