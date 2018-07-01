@@ -16,6 +16,7 @@
          <ImageView
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
+             android:padding="4dp"
              android:layout_gravity="center"
              android:id="@+id/profile_id"
              android:background="@drawable/profile_img"/>
@@ -26,13 +27,13 @@
              android:paddingTop="24dp"
              android:textSize="32sp"
              android:textColor="@color/sassa_green_colour"
-             android:text="WELCOME"/>
+             android:text="@string/welcome"/>
          <android.support.v7.widget.AppCompatTextView
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:id="@+id/profile_details"
              android:gravity="center"
-             android:text="Sassa user profile"/>
+             android:text="@string/sassa_user_profile"/>
 
      </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 final Snackbar snackBar = Snackbar.make(findViewById(R.id.main_activity_layout),
-                        "Replace with another menu for example edit profile", 20000);
+                        "Replace with another menu for example edit profile", 10000);
                 snackBar.setActionTextColor(Color.RED);
                 // Changing action button text color
                 View sbView = snackBar.getView();
@@ -105,16 +105,19 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem itm) {
         int id = itm.getItemId();
         switch (id){
-            case R.id.nav_camera:
+            case R.id.nav_annoucement:
 
                 break;
-            case R.id.nav_gallery:
+            case R.id.nav_transactions:
 
                 break;
-            case R.id.nav_slideshow:
+            case R.id.nav_balances:
 
                 break;
-            case R.id.nav_manage:
+            case R.id.nav_sassa_offices:
+
+                break;
+            case R.id.nav_special_doctors:
 
                 break;
                 default:
