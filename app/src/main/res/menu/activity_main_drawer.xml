@@ -2,29 +2,42 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_annoucement"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/announcement" />
-        <item
-            android:id="@+id/nav_transactions"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/transactions" />
-        <item
-            android:id="@+id/nav_balances"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/balances" />
-        <item
-            android:id="@+id/nav_sassa_offices"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/sassa_offices" />
-        <item
-            android:id="@+id/nav_special_doctors"
-            android:icon="@drawable/ic_menu_send"
-            android:title="@string/special_doctors" />
+        <item android:title="@string/sassa_app_services">
+            <menu>
+                <item
+                    android:id="@+id/nab_announcement"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="@string/announcement" />
+                <item
+                    android:id="@+id/nav_transactions"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="@string/transactions" />
+                <item
+                    android:id="@+id/nav_balances"
+                    android:icon="@drawable/ic_menu_slideshow"
+                    android:title="@string/balances" />
+            </menu>
+        </item>
+        <item android:title="@string/communication_details">
+            <menu>
+                <item
+                    android:id="@+id/nav_sassa_email"
+                    android:icon="@drawable/ic_menu_gallery"
+                    android:title="@string/email_sassa" />
+                <item
+                    android:id="@+id/nav_sassa_offices"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="@string/sassa_offices" />
+                <item
+                    android:id="@+id/nav_special_doctors"
+                    android:icon="@drawable/ic_menu_send"
+                    android:title="@string/special_doctors" />
+                <item
+                    android:id="@+id/nav_sassa_help"
+                    android:icon="@drawable/ic_menu_camera"
+                    android:title="@string/sassa_help_line" />
+            </menu>
+        </item>
     </group>
-
-
 </menu>

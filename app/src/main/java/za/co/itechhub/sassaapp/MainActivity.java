@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem itm) {
         int id = itm.getItemId();
         switch (id){
-            case R.id.nav_annoucement:
+            case R.id.nab_announcement:
 
                 break;
             case R.id.nav_transactions:

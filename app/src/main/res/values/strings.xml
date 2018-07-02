@@ -30,4 +30,8 @@
     <string name="balances">Balances</string>
     <string name="sassa_offices">Sassa Offices</string>
     <string name="special_doctors">Special Doctors</string>
+    <string name="sassa_app_services">Sassa App Services</string>
+    <string name="communication_details">Communication Details</string>
+    <string name="email_sassa">Email Sassa</string>
+    <string name="sassa_help_line">Sassa Help Line</string>
 </resources>

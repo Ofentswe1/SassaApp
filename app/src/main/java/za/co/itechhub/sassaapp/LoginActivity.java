@@ -1,13 +1,16 @@
 package za.co.itechhub.sassaapp;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -52,7 +55,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private class JSONTask extends AsyncTask<String, String, String> {
 
@@ -116,6 +118,22 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), MainActivity.class);
                 intent.putExtra("user", user);
                 startActivity(intent);
+            } else {
+                final Snackbar snackBar = Snackbar.make(findViewById(R.id.layout_activity_login),
+                        "Access denied, wrong username/password", 50000);
+                snackBar.setActionTextColor(Color.RED);
+                View sbView = snackBar.getView();
+                TextView textView = sbView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.YELLOW);
+                snackBar.setAction("Dismiss", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        snackBar.dismiss();
+                        startActivity(new Intent(getBaseContext(), LoginActivity.class));
+                        finish();
+                    }
+                });
+                snackBar.show();
             }
         }
     }
